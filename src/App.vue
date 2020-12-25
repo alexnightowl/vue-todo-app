@@ -2,14 +2,9 @@
   <div class="app">
     <h1>Todo App</h1>
     <div class="wrapper">
-      <Calendar 
-        @add-date="addDate"
-      />
+      <Calendar @add-date="addDate" />
       <div>
-        <AddTodo 
-          @add-todo="addTodo"
-          v-bind:dateID="dateID"
-        />
+        <AddTodo @add-todo="addTodo" v-bind:dateID="dateID" />
         <TodoList
           v-if="filteredByDate.length"
           v-bind:todos="filteredByDate"
@@ -35,7 +30,7 @@ export default {
       todos: localStorage.getItem("todos")
         ? JSON.parse(localStorage.getItem("todos"))
         : [],
-      dateID: 'without date'
+      dateID: `${new Date().getDate()}/${new Date().getMonth()+1}/${new Date().getFullYear()}`
     };
   },
   mounted() {
